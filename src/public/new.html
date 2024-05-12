@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Note App</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='new.css'>
+</head>
+
+<body>
+    <form action='/api/notes' method='POST' id="container">
+        <h1>New note</h1>
+        <input type='text' id="title" name="title" placeholder="Title" />
+        <textarea id="note" name="note" rows="10"></textarea>
+        <a href="/">See all notes</a>
+        <button type='submit'>SAVE</button>
+    </form>
+
+    <script src='displayIp.js'></script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #eee;
+    height: 100vh;
+    display: flex;
+}
+
+form {
+    width: 100%;
+    margin: auto 1rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 3px 0 gray;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+@media screen and (min-width: 400px) {
+    form {
+        width: 400px;
+        margin: auto;
+    }
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 5px;
+    display: flex;
+    width: 100%;
+}
+
+textarea {
+    margin: 0.5rem 0;
+    width: 100%;
+    display: flex;
+    padding: 5px;
+}
+
+button {
+    width: 100px;
+    height: 1rem;
+    padding: 1rem;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
