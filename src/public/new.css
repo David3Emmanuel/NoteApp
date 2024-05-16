@@ -20,6 +20,7 @@ form {
     box-shadow: 0 4px 3px 0 gray;
     border-radius: 1rem;
     padding: 1rem;
+    gap: 5px;
 }
 
 @media screen and (min-width: 400px) {
@@ -31,7 +32,6 @@ form {
 
 h1 {
     text-align: center;
-    margin-bottom: 5px;
 }
 
 input {
@@ -40,19 +40,46 @@ input {
     width: 100%;
 }
 
+input[type=file] {
+    display: none;
+}
+
 textarea {
-    margin: 0.5rem 0;
     width: 100%;
     display: flex;
     padding: 5px;
 }
 
-button {
-    width: 100px;
-    height: 1rem;
-    padding: 1rem;
-    margin: auto;
+.actions {
+    display: flex;
+    height: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.actions > * {
+    flex: 1;
+    padding: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.image-label {
+    border: 1px dashed #444;
+}
+
+#image-container {
+    width: 100%;
+    display: none;
+}
+
+#image-container.uploaded {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    width: 100%;
 }

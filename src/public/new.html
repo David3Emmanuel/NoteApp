@@ -10,14 +10,22 @@
 </head>
 
 <body>
-    <form action='/api/notes' method='POST' id="container">
+    <form action='/api/notes' method='POST' id="container" enctype="multipart/form-data">
         <h1>New note</h1>
         <input type='text' id="title" name="title" placeholder="Title" />
+        <div id="image-container">
+            <img />
+        </div>
         <textarea id="note" name="note" rows="10"></textarea>
+        <div class="actions">
+            <label for="image-input" class="image-label">Add image</label>
+            <input type="file" id="image-input" name="image" accept="image/*" />
+            <button type='submit'>SAVE</button>
+        </div>
         <a href="/">See all notes</a>
-        <button type='submit'>SAVE</button>
     </form>
 
+    <script src="new.js"></script>
     <script src='displayIp.js'></script>
 </body>
 
