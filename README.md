@@ -6,6 +6,11 @@ For sharing notes between devices via local wifi or hotspot. Does not require ac
 2. Run `npm install` to install dependencies
 
 ## Usage
+1. Open `note-app.bat` to start the server
+2. The IP address is displayed at the top of the app
+3. On any other device, open `IP_ADDRESS:3000` in a browser
+
+### OR
 1. Run `npm  start` to start the server
 2. Open the app on your browser on `localhost:3000`
 3. The IP address is displayed at the top of the app

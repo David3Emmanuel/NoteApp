@@ -46,7 +46,7 @@ app.get('/api/notes', (req, res) => {
 
 app.post('/api/notes', upload.single("image"), (req, res) => {
     const { title, note } = req.body;
-    
+
     getNotes(notes => {
         notes.push({
             title,
@@ -60,6 +60,20 @@ app.post('/api/notes', upload.single("image"), (req, res) => {
     });
 });
 
+function openBrowser() {
+    console.log("Opening browser...");
+    const { exec } = require('child_process');
+    exec('START http://localhost:3000', (err, stdout, stderr) => {
+        if (err) {
+            // node couldn't execute the command
+            return;
+        }
+
+        console.log("READY");
+    });
+}
+
 app.listen(PORT, () => {
     console.log("[SERVER] listening on port", PORT);
+    openBrowser();
 })
