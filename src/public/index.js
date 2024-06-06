@@ -1,6 +1,6 @@
 const container = document.getElementById('container');
 
-function addNote({ title, note, date, image: imageSrc }) {
+function addNote({ id, title, note, date, image: imageSrc }) {
     const noteContainer = document.createElement('div');
     noteContainer.classList.add('note');
 
@@ -31,6 +31,18 @@ function addNote({ title, note, date, image: imageSrc }) {
     const p = document.createElement('p');
     p.innerText = note;
     noteContainer.appendChild(p);
+
+    const deleteButton = document.createElement('button');
+    deleteButton.innerText = 'Delete';
+    deleteButton.onclick = () => {
+        fetch(`/api/notes/${id}`, { method: 'DELETE' })
+            .then(response => {
+                if (response.ok) {
+                    container.removeChild(noteContainer);
+                }
+            });
+    };
+    noteContainer.appendChild(deleteButton);
 
     container.appendChild(noteContainer);
 }

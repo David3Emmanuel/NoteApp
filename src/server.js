@@ -52,11 +52,34 @@ app.post('/api/notes', upload.single("image"), (req, res) => {
             title,
             note,
             date: new Date(),
-            image: req.file ? req.file.filename : undefined
+            image: req.file ? req.file.filename : undefined,
+            id: Math.random().toString(36).substring(7)
         });
         writeNotes(notes, () => {
             res.redirect('/');
         });
+    });
+});
+
+app.delete('/api/notes/:id', (req, res) => {
+    const { id } = req.params;
+
+    getNotes(notes => {
+        const index = notes.findIndex(note => note.id === id);
+        if (index !== -1) {
+            const note = notes[index];
+            if (note.image) {
+                const fs = require('fs');
+                fs.unlink(__dirname + '/../uploads/' + note.image);
+            }
+
+            notes.splice(index, 1);
+            writeNotes(notes, () => {
+                res.sendStatus(200);
+            });
+        } else {
+            res.sendStatus(404);
+        }
     });
 });
 
