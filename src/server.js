@@ -1,7 +1,9 @@
 const express = require('express');
 const multer = require('multer');
 const ip = require('ip');
-const { getNotes, writeNotes } = require('./database');
+const { getNotes, writeNotes, validateDatabase } = require('./database');
+
+validateDatabase();
 
 const PORT = 3000;
 
