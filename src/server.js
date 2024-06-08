@@ -13,7 +13,9 @@ var storage = multer.diskStorage(
         filename: function (req, file, cb) {
             const split = file.originalname.split('.');
             const suffix = split.splice(split.length - 1)[0];
-            cb(null, `${split.join('.')}-${Date.now()}.${suffix}`);
+            const formattedFilename = `${split.join('.').replace(/[^a-zA-Z0-9]/g, '')}-${Date.now()}.${suffix}`;
+            console.log(`Uploading ${formattedFilename}...`);
+            cb(null, formattedFilename);
         }
     }
 );
@@ -70,7 +72,10 @@ app.delete('/api/notes/:id', (req, res) => {
             const note = notes[index];
             if (note.image) {
                 const fs = require('fs');
-                fs.unlink(__dirname + '/../uploads/' + note.image);
+                fs.unlink(__dirname + '/../uploads/' + note.image, (err) => {
+                    if (err) console.log("Image does not exist");
+                    else console.log(note.image, 'was deleted');
+                });
             }
 
             notes.splice(index, 1);
